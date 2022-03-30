@@ -1,0 +1,255 @@
+:root {
+  --tc: #1c1917;
+  --header-bc: #f5f5f4;
+  --header-box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+  --main-bc: #e7e5e4;
+  --btn-add-onhover-bc: #d6d3d1;
+  --modal-bc: rgba(0, 0, 0, 0.4);
+  --modal-form-bc: #e7e5e4;
+  --modal-btn-bc: #6ee7b7;
+  --modal-btn-onhover-bc: #34d399;
+  --card-bc: #f5f5f4;
+  --card-button-read-bc: #86efac;
+  --card-button-read-onhover-bc: #4ade80;
+  --card-button-not-read-bc: #fca5a5;
+  --card-button-not-read-onhover-bc: #f87171;
+  --card-button-remove-bc: #e5e5e5;
+  --card-button-remove-onhover-bc: #d4d4d4;
+  --footer-bc: #f5f5f4;
+
+  font-family: "Inter", sans-serif;
+  color: var(--tc);
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  min-height: 100vh;
+  background-color: var(--main-bc);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  position: relative;
+}
+
+.container {
+  width: 114rem;
+}
+
+.header {
+  background-color: var(--header-bc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-shadow: var(--header-box-shadow);
+  z-index: 1;
+  grid-area: header;
+}
+
+.header h1 {
+  font-weight: 900;
+  font-size: 4rem;
+}
+
+.main {
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.main .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.main .btn-add {
+  border: none;
+  background-color: transparent;
+  font-size: 2.5rem;
+  font-weight: 700;
+  padding: 2rem 3rem;
+}
+
+.main .btn-add:hover,
+.main .btn-add:active {
+  background-color: var(--btn-add-onhover-bc);
+  border-radius: 1rem;
+}
+
+.modal {
+  background-color: var(--modal-bc);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  background-color: var(--modal-form-bc);
+  width: 40rem;
+  height: 50rem;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.modal .form input {
+  width: 100%;
+  height: 5rem;
+  border: none;
+  border-radius: 1rem;
+  padding-left: 2rem;
+  font-size: 2rem;
+}
+
+.modal .form div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.modal .form div label {
+  font-size: 2rem;
+}
+
+.modal .form div #isRead {
+  height: 2rem;
+  width: 2rem;
+}
+
+.modal .form .btn-add-book {
+  border: none;
+  border-radius: 1rem;
+  background-color: var(--modal-btn-bc);
+  width: 10rem;
+  height: 5rem;
+  font-size: 3rem;
+}
+
+.modal .form .btn-add-book:hover,
+.modal .form .btn-add-book:active {
+  background-color: var(--modal-btn-onhover-bc);
+}
+
+.modal.open {
+  display: flex;
+}
+
+.bookshelf {
+  align-self: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.bookshelf .card {
+  background-color: var(--card-bc);
+  width: 25rem;
+  height: 35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.bookshelf .card .title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.bookshelf .card .author {
+  font-size: 1.5rem;
+}
+
+.bookshelf .card .pages {
+  font-size: 1.4rem;
+}
+
+.bookshelf .card button[type="button"] {
+  border: none;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.bookshelf .card .read {
+  background-color: var(--card-button-read-bc);
+}
+
+.bookshelf .card .read:hover,
+.bookshelf .card .read:active {
+  background-color: var(--card-button-read-onhover-bc);
+}
+
+.bookshelf .card .not-read {
+  background-color: var(--card-button-not-read-bc);
+}
+
+.bookshelf .card .not-read:hover,
+.bookshelf .card .not-read:active {
+  background-color: var(--card-button-not-read-onhover-bc);
+}
+
+.bookshelf .card .remove {
+  background-color: var(--card-button-remove-bc);
+}
+
+.bookshelf .card .remove:hover,
+.bookshelf .card .remove:active {
+  background-color: var(--card-button-remove-onhover-bc);
+}
+
+.footer {
+  background-color: var(--footer-bc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+  padding: 2rem;
+}
+
+.footer .github-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.footer .github-icon:hover,
+.footer .github-icon:active {
+  transform: rotate(360deg) scale(1.1);
+}
