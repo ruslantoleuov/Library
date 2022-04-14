@@ -10,21 +10,23 @@ const bookshelfContainer = document.querySelector(".bookshelf");
 
 let myLibrary = [];
 
-function Book(id, title, author, pages, isRead) {
-  this.id = id;
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-}
-
-Book.prototype.changeClasses = function () {
-  if (this.isRead) {
-    this.isRead = false;
-  } else {
-    this.isRead = true;
+class Book {
+  constructor(id, title, author, pages, isRead) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
   }
-};
+
+  changeReadStatus() {
+    if (this.isRead) {
+      this.isRead = false;
+    } else {
+      this.isRead = true;
+    }
+  }
+}
 
 function showModal() {
   if (!modal.classList.contains("open")) {
@@ -112,7 +114,7 @@ function changeClasses(target, remove, add, textContent) {
   target.textContent = textContent;
   for ([index, book] of myLibrary.entries()) {
     if (target.parentNode.dataset.id === book.id) {
-      myLibrary[index].changeClasses();
+      myLibrary[index].changeReadStatus();
     }
   }
 }
