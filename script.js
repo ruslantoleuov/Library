@@ -108,6 +108,15 @@ function addBookToLibrary(e) {
   }
 }
 
+function checkInputField(e) {
+  if (e.target.validity.valueMissing) {
+    e.target.setCustomValidity("Please fill out this field.");
+    e.target.reportValidity();
+  } else {
+    e.target.setCustomValidity("");
+  }
+}
+
 function changeClasses(target, remove, add, textContent) {
   target.classList.remove(remove);
   target.classList.add(add);
@@ -133,3 +142,6 @@ addBtn.addEventListener("click", showModal);
 addBook.addEventListener("click", addBookToLibrary);
 bookshelfContainer.addEventListener("click", removeCard);
 bookshelfContainer.addEventListener("click", toggleReadStatus);
+titleInputEl.addEventListener("input", checkInputField);
+authorInputEl.addEventListener("input", checkInputField);
+pagesInputEL.addEventListener("input", checkInputField);
